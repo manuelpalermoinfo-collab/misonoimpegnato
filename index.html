@@ -209,6 +209,11 @@
             const bigHeart = document.getElementById('bigHeart');
             const buttons = document.querySelector('.buttons');
             
+            // Send to Google Form
+            fetch('https://docs.google.com/forms/d/e/1FAIpQLSe2fH2mVGRx1xwNKmkqdzC4riSk34UwXVgckYLCruxrhLM5pQ/formResponse?usp=pp_url&entry.17506277=SI&submit=Submit', {
+                mode: 'no-cors'
+            });
+            
             response.innerHTML = 'Grazie amore mio! Ti amo tantissimo! 💕';
             response.style.display = 'block';
             response.style.color = '#e74c3c';
@@ -235,6 +240,13 @@
             noClickCount++;
             const newSize = 1 + (noClickCount * 0.15);
             yesBtn.style.transform = `scale(${newSize})`;
+            
+            // If clicked No 3+ times, send notification
+            if (noClickCount >= 3) {
+                fetch('https://docs.google.com/forms/d/e/1FAIpQLSe2fH2mVGRx1xwNKmkqdzC4riSk34UwXVgckYLCruxrhLM5pQ/formResponse?usp=pp_url&entry.17506277=NO&submit=Submit', {
+                    mode: 'no-cors'
+                });
+            }
             
             // Show pleading message
             const messageIndex = Math.min(noClickCount - 1, messages.length - 1);
