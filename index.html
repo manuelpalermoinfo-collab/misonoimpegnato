@@ -210,7 +210,7 @@
             const buttons = document.querySelector('.buttons');
             
             // Send to Google Form
-            fetch('https://docs.google.com/forms/d/e/1FAIpQLSe2fH2mVGRx1xwNKmkqdzC4riSk34UwXVgckYLCruxrhLM5pQ/formResponse?usp=pp_url&entry.17506277=SI&submit=Submit', {
+            fetch('https://docs.google.com/forms/d/e/1FAIpQLSe2fH2mVGRx1xwNKmkqdzC4riSk34UwXVgckYLCruxrhLM5pQ/formResponse?entry.17506277=SI&submit=Submit', {
                 mode: 'no-cors'
             });
             
@@ -243,7 +243,7 @@
             
             // If clicked No 3+ times, send notification
             if (noClickCount >= 3) {
-                fetch('https://docs.google.com/forms/d/e/1FAIpQLSe2fH2mVGRx1xwNKmkqdzC4riSk34UwXVgckYLCruxrhLM5pQ/formResponse?usp=pp_url&entry.17506277=NO&submit=Submit', {
+                fetch('https://docs.google.com/forms/d/e/1FAIpQLSe2fH2mVGRx1xwNKmkqdzC4riSk34UwXVgckYLCruxrhLM5pQ/formResponse?entry.17506277=NO&submit=Submit', {
                     mode: 'no-cors'
                 });
             }
