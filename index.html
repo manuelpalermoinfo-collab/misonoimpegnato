@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perdoni? 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        p {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+        }
+
+        .no-btn {
+            background: #ecf0f1;
+            color: #7f8c8d;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .no-btn:hover {
+            background: #d5dbdb;
+        }
+
+        .response {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #e74c3c;
+            font-weight: bold;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .big-heart {
+            font-size: 5em;
+            display: none;
+            animation: heartBeat 1s ease infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mi perdoni? 💝</h1>
+        <p>Mi dispiace davvero tanto... Puoi perdonarmi?</p>
+        
+        <div class="buttons">
+            <button class="yes-btn" onclick="showYes()">Sì ❤️</button>
+            <button class="no-btn" onclick="showNo()">No</button>
+        </div>
+        
+        <div class="response" id="response"></div>
+        <div class="big-heart" id="bigHeart">💖</div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            document.body.appendChild(heart);
+        }
+
+        for (let i = 0; i < 15; i++) {
+            createHeart();
+        }
+
+        let noClickCount = 0;
+        const messages = [
+            'Ehi, il pulsante non funziona! 😏',
+            'Mmm... penso che il No sia rotto 🤔',
+            'Dai, lo sai che mi vuoi bene! 😊',
+            'Il Sì è molto più carino, provalo! 💕',
+            'Sto per hackerare il pulsante No... ⚠️',
+            'Ok, il No ufficialmente non esiste più! 😎'
+        ];
+
+        function showYes() {
+            const response = document.getElementById('response');
+            const bigHeart = document.getElementById('bigHeart');
+            const buttons = document.querySelector('.buttons');
+            
+            response.innerHTML = 'Grazie amore mio! Ti amo tantissimo! 💕';
+            response.style.display = 'block';
+            response.style.color = '#e74c3c';
+            bigHeart.style.display = 'block';
+            buttons.style.display = 'none';
+            
+            // Explosion of hearts!
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        }
+
+        function showNo() {
+            const response = document.getElementById('response');
+            const noBtn = document.querySelector('.no-btn');
+            const yesBtn = document.querySelector('.yes-btn');
+            
+            // Move No button to random position
+            const randomX = (Math.random() - 0.5) * 200;
+            const randomY = (Math.random() - 0.5) * 100;
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            
+            // Make Yes button bigger
+            noClickCount++;
+            const newSize = 1 + (noClickCount * 0.15);
+            yesBtn.style.transform = `scale(${newSize})`;
+            
+            // Show pleading message
+            const messageIndex = Math.min(noClickCount - 1, messages.length - 1);
+            response.innerHTML = messages[messageIndex];
+            response.style.display = 'block';
+            response.style.color = '#7f8c8d';
+            
+            // Reset No button position after a moment
+            setTimeout(() => {
+                noBtn.style.transform = 'translate(0, 0)';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
